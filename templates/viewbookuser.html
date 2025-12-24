@@ -1,0 +1,41 @@
+{% load static %}
+{% block content %}
+{% include 'header.html' %}
+
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="text-center mb-3 pb-3">
+            <h1>All Bookings</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="bg-white p-4 rounded shadow-sm">
+                    <table class="table table-bordered table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Event Name</th>
+                                <th>User Name</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for b in bookings %}
+                            <tr>
+                                <td>{{ b.event.event_name }}</td>
+                                <td>{{ b.user.name }}</td>
+                                <td>{{ b.date }}</td>
+                               <td>{{b.status}}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'footer.html' %}
+{% endblock %}

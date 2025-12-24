@@ -1,0 +1,64 @@
+{% load static %}
+{% block content %}
+{% include 'header.html' %}
+
+    <!-- Header Start -->
+    <div class="container-fluid page-header">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+                <h3 class="display-4 text-white text-uppercase">Add Event</h3>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- Contact Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;"></h6>
+                <h1>Add Event Form</h1>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-form bg-white" style="padding: 30px;">
+                        <div id="success"></div>
+                        <form method="POST" action="{% if update %}{% url 'update_organizer' organizer_id %}{% else %}addevent{% endif %}">
+                            {% csrf_token %}
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="id_name" class="form-label"><i class="fas fa-user mr-1"></i> Name</label>
+                                    <input type="text" name="name" id="id_name" class="form-control" placeholder="Enter organizer name" value="{{ form.instance.name|default_if_none:'' }}" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="id_place" class="form-label"><i class="fas fa-map-marker-alt mr-1"></i> Place</label>
+                                    <input type="text" name="place" id="id_place" class="form-control" placeholder="Enter place" value="{{ form.instance.place|default_if_none:'' }}" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="id_email" class="form-label"><i class="fas fa-envelope mr-1"></i> Email</label>
+                                    <input type="email" name="email" id="id_email" class="form-control" placeholder="Enter email" value="{{ form.instance.email|default_if_none:'' }}" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="id_password" class="form-label"><i class="fas fa-key mr-1"></i> Password</label>
+                                    <input type="password" name="password" id="id_password" class="form-control" placeholder="Enter password" value="{{ form.instance.password|default_if_none:'' }}" required>
+                                </div>
+                            </div>
+                            <div class="text-center mt-4">
+                                <button class="btn btn-attractive px-5 py-2" type="submit">
+                                    {% if update %}<i class="fas fa-edit mr-1"></i> Update Event{% else %}<i class="fas fa-plus mr-1"></i> Add Event{% endif %}
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+    <!-- Footer Start -->
+   
+      {% include 'footer.html' %}
+        {% endblock %}

@@ -1,0 +1,68 @@
+{% load static %}
+{% block content %}
+{% include 'header.html' %}
+
+    <!-- Header Start -->
+    <div class="container-fluid page-header">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+                <h3 class="display-4 text-white text-uppercase">Login</h3>
+               
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+    <!-- Booking Start -->
+   
+    <!-- Booking End -->
+
+
+    <!-- Contact Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;"></h6>
+                <h1>Login Form</h1>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-form bg-white" style="padding: 30px;">
+                        
+                        <form method="POST" action="logint">
+{% csrf_token %}                           
+						   <div class="form-row">
+                                
+                                <div class="control-group col-sm-12">
+                                    <input type="email" class="form-control p-4" name="email" placeholder="Your Email"
+                                        required="required"  />
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                   
+						
+							 <div class="control-group">
+                                <input type="text" class="form-control p-4" name="password" placeholder="password"
+                                    required="required" />
+                                <p class="help-block text-danger"></p>
+                            </div>
+							
+							
+							
+							
+                            <div class="text-center">
+                                <button class="btn btn-primary py-3 px-4" type="submit" name="submit" >Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+
+    <!-- Footer Start -->
+      {% include 'footer.html' %}
+   {% endblock %}

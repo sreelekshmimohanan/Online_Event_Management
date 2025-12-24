@@ -1,0 +1,47 @@
+{% load static %}
+{% block content %}
+{% include 'header.html' %}
+
+    <!-- Header Start -->
+    <div class="container-fluid page-header">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+                <h3 class="display-4 text-white text-uppercase">Add Feedback</h3>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+    <!-- Feedback Form Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="card shadow border-0">
+                        <div class="card-header bg-primary text-white text-center">
+                            <h2 class="mb-0">We Value Your Feedback</h2>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST" action="addfeedback">
+                                {% csrf_token %}
+                                <div class="form-group mb-4">
+                                    <label for="feedback" class="font-weight-bold">Your Feedback</label>
+                                    <textarea class="form-control" id="feedback" name="feedback" rows="5" placeholder="Type your feedback here..." required></textarea>
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-primary px-5 py-2" type="submit">Submit Feedback</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Feedback Form End -->
+
+    <!-- Footer Start -->
+   
+      {% include 'footer.html' %}
+        {% endblock %}

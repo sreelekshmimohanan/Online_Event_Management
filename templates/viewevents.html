@@ -1,0 +1,40 @@
+{% load static %}
+{% block content %}
+{% include 'header.html' %}
+
+<!-- Events List -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="text-center mb-3 pb-3">
+            <h1>Upcoming Events</h1>
+        </div>
+        <div class="row">
+            {% for p in programs %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 shadow-sm border-0" style="border-radius: 12px; overflow: hidden;">
+                    {% if p.image %}
+                    <img src="{{ p.image.url }}" class="card-img-top" alt="{{ p.event_name }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ p.event_name }}</h5>
+                        <p class="card-text">
+                            <strong>Venue:</strong> {{ p.venue }}<br>
+                            <strong>Date:</strong> {{ p.date }}<br>
+                            <strong>District:</strong> {{ p.district }}
+                        </p>
+                        <p>{{ p.description }}</p>
+                        <form method="POST" action="{% url 'book_event' p.id %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="event_date" value="{{ p.date }}">
+                            <button type="submit" class="btn btn-primary">Book</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% include 'footer.html' %}
+{% endblock %}

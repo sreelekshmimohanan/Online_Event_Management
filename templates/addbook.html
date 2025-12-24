@@ -1,0 +1,117 @@
+l{% load static %}
+{% block content %}
+{% include 'header.html' %}
+
+    <!-- Header Start -->
+    <div class="container-fluid page-header">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+                <h3 class="display-4 text-white text-uppercase">Card Details</h3>
+               
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+    <!-- Booking Start -->
+   
+    <!-- Booking End -->
+
+
+    <!-- Contact Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;"></h6>
+                <h1>Card Details</h1>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-form bg-white" style="padding: 30px;">
+                        <div id="success"></div>
+                        <form name="" id="contactForm" method="POST" action="add_book">
+{% csrf_token %}                           
+						   <div class="form-row">
+                                <div class="control-group col-sm-6">
+                                    <input type="hidden" class="form-control p-4" value="{{result.facility_id}}" name="facility_id" placeholder="Card Holder Name" />
+                                   
+                                </div>
+	
+                                <br><br>
+
+                                <div class="control-group col-sm-6">
+                                    <input type="hidden" class="form-control p-4"  value="{{result.hall_id}}" name="hall_id" placeholder="Card Number" />
+
+                                   
+                                </div>
+	
+                                <br><br>	
+                                <br><br>
+
+                                <div class="control-group col-sm-6">
+                                    <input type="hidden" class="form-control p-4"  value="{{result.ceremony_id}}" name="ceremony_id" placeholder="Expire Date" />
+
+                                </div>
+	
+                                <br><br>	
+                                <br><br>
+
+
+                              
+
+
+                                <div class="control-group col-sm-6">
+                                    <input type="hidden" class="form-control p-4"  value="{{result.rate}}" name="rate"  placeholder="rate" />
+
+                                   
+                                </div>
+
+                                <br><br>	
+                                <br><br>
+
+                                <div class="control-group col-sm-6">
+                                    <input type="date" class="form-control p-4" name="book_date" placeholder="booking Date" />
+
+                                </div>
+	
+                                <br><br>	
+                                <br><br>
+                                <div class="control-group col-sm-6">
+                                    
+                                    <input type="time" class="form-control p-4"  name="hall_time" placeholder="hall_time " />
+
+                                </div>
+	
+                               
+	
+                          
+                                	
+							<br><br>
+                            </div>
+                       
+	
+							<br><br>
+
+
+                           
+                            
+							<br><br>
+					
+							 
+                          
+                            <div class="text-center">
+                                <button class="btn btn-primary py-3 px-4" type="submit" name="submit" id="">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+
+    <!-- Footer Start -->
+      {% include 'footer.html' %}
+   {% endblock %}
